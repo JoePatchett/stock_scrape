@@ -21,7 +21,7 @@ def stock_get(nyse_codes, csv_file)
 		databox = []
 		databox.append(code)
 		databox.append(final_close)
-		for i in range(6):
+		for i in range(5):
 			databox.append(parsed_text.findAll('div',{'class':'value__b93f12ea'})[i].string)
 		stock_data_writer.writerow()
 	stock_data_file.close()
