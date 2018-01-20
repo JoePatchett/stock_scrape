@@ -51,7 +51,7 @@ def calculate_daily_differences(csv_file_day1, csv_file_day2):
 		final_delta_values.append(temp_list)
 def kNN_comparison(test_point, rest_of_data):
 	"""
-	This machine learning algorithm takes in whatever stock data cal
+	This will be updated later.
 	"""
 					  
 					  
