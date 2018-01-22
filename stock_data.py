@@ -6,7 +6,12 @@ Created on Thu Dec 28 15:43:38 2017
 from bs4 import BeautifulSoup
 import requests
 import csv
-def stock_get(nyse_codes, csv_file)
+def stock_get(nyse_codes, csv_file):
+	"""
+	This function takes New York stock exchange tickers (i.e. 'AAPL' for Apple) and the csv file location where to store this data.
+	The result is a csv file with company code, price, previous open, market volume, and market value. All of this data is from bloomberg.com
+	At the moment it pauses for 3 seconds after each request so that you don't get flagged. Change as necessary. Perhaps will move to Scrapy.
+	"""
 	stock_data_file = open(csv_file,'a', newline='')
 	stock_data_writer = csv.writer(stock_data_file)
 	for code in nyse_codes:    
@@ -25,7 +30,8 @@ def stock_get(nyse_codes, csv_file)
 			databox.append(parsed_text.findAll('div',{'class':'value__b93f12ea'})[i].string)
 		stock_data_writer.writerow()
 	stock_data_file.close()
-	
+	return 0
+
 def calculate_daily_differences(csv_file_day1, csv_file_day2):
 	"""
 	This function takes the stock data from one day, subtracts each value and appends the day 1, day 2, and delta value
@@ -49,10 +55,32 @@ def calculate_daily_differences(csv_file_day1, csv_file_day2):
 			temp_delta = day_2_values[i][j]-day_1_values[i][j]
 			temp_list.append([day_1_values[i][j], day_2_values[i][j], temp_delta)
 		final_delta_values.append(temp_list)
-def kNN_comparison(test_point, rest_of_data):
+	return final_delta_values
+
+def kNN_comparison(test_point, rest_of_data, k):
 	"""
-	This will be updated later.
+	This function takes a test date open value which you want to predict if the stock will increase or not. The 'test_point' is
+	the percent change in stock on a previous day. The aptly named 'rest_of_data' will include the percent change on a previous day,
+	and then a '0' or '1' if that stock decreased or increased on a given date. This given date should not be the same date as the 'test_point',
+	the goal is to see if changes in stocks on previous days can have lasting effects on stocks in the future.
+
 	"""
+	[training_set, test_set] = prep_data(rest_of_data)
+	euclidean_distance(test_point, training_set)
+	return 0
+def prep_data(csv_file, split_value, ):
+	"""
+	This function places the data into two lists, training set and test set.
+	"""
+	return 0
+def euclidean_distance(test_point, data_set):				 
+	distances = []
+	for i in range(len(data_set)):
+		distances.append((test_point[i] - data_set[i])^(1/2))
+	return distances
+	
+					  
+				
 					  
 					  
 			
