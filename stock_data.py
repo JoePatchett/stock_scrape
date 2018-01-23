@@ -83,7 +83,7 @@ def euclidean_distance(test_point, data_set):
 		distances = ((test_point[i] - data_set[i])^(1/2))
 	return distances
 	
-#I Slowly adding some of my versions.				  
+#I Slowly adding old versions.				  
 				
 					  
 					  
