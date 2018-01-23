@@ -41,11 +41,11 @@ def calculate_daily_differences(csv_file_day1, csv_file_day2):
 	day2_values = []
 	final_delta_values = []
 	with open(csv_file_day1, newline = '') as day1:
-	day_1_reader = csv.reader(day1, delimiter = ',')
+		day_1_reader = csv.reader(day1, delimiter = ',')
 	for row in day_1_reader:
 		day1_values.append(row[:4])
 	with open(csv_file_day2, newline = '') as day2:
-	day_2_reader = csv.reader(day2, delimiter = ',')
+		day_2_reader = csv.reader(day2, delimiter = ',')
 	for row in day_2_reader:
 		day2_values.append(row[:4])
 	delta_values = []
@@ -53,7 +53,7 @@ def calculate_daily_differences(csv_file_day1, csv_file_day2):
 		temp_list = []
 		for j in day_1_values[i]:
 			temp_delta = day_2_values[i][j]-day_1_values[i][j]
-			temp_list.append([day_1_values[i][j], day_2_values[i][j], temp_delta)
+			temp_list.append([day_1_values[i][j], day_2_values[i][j], temp_delta])
 		final_delta_values.append(temp_list)
 	return final_delta_values
 
@@ -66,20 +66,24 @@ def kNN_comparison(test_point, rest_of_data, k):
 
 	"""
 	[training_set, test_set] = prep_data(rest_of_data)
-	euclidean_distance(test_point, training_set)
-	return 0
-def prep_data(csv_file, split_value, ):
+	for x in range(len(training_set)):
+		distances.append(training_set[x], euclidean_distance(test_point, training_set[x]))
+	distances.sort()
+	neighbors = []
+	for x in range(k):
+		neighors.append(distances(k))
+	
+def prep_data(csv_file, split_value, seed_number):
 	"""
 	This function places the data into two lists, training set and test set.
 	"""
 	return 0
 def euclidean_distance(test_point, data_set):				 
-	distances = []
 	for i in range(len(data_set)):
-		distances.append((test_point[i] - data_set[i])^(1/2))
+		distances = ((test_point[i] - data_set[i])^(1/2))
 	return distances
 	
-					  
+#I Slowly adding some of my versions.				  
 				
 					  
 					  
